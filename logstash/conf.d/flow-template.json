@@ -1,0 +1,58 @@
+{
+	"index_patterns": ["netflow-*"],
+	"mappings": {
+		"doc": {
+			"properties": {
+				"@timestamp": {"type": "date"},
+				"@version": {"type": "text"},
+				"netflow.in_bytes": {"type": "long"},
+				"netflow.ipv4_dst_addr": {"type": "ip"},
+				"netflow.l4_dst_port": {"type": "long"},
+				"netflow.duration": {"type": "float"},
+				"netflow.last_switched": {
+					"type": "date"
+				},
+				"dst_geoip":{	
+					"dynamic": true,
+					"properties": {
+						"ip": {"type": "ip"},
+						"city_name": {"type":"text"},
+						"country_code2": {"type":"text"},
+					      	"continent_code": {"type":"text"},
+					      	"country_code3": {"type":"text"},
+					      	"country_name": {"type":"text"},
+						"location" : { "type" : "geo_point" },
+						"latitude" : { "type" : "float" },
+						"longitude" : { "type" : "float" }
+					}
+				},
+				"src_geoip": {
+					     "dynamic": true,
+                                        "properties": {
+                                                "ip": {"type": "ip"},   
+                                                "city_name": {"type":"text"},
+                                                "country_code2": {"type":"text"},
+                                                "continent_code": {"type":"text"},
+                                                "country_code3": {"type":"text"},
+                                                "country_name": {"type":"text"},
+						"location" : { "type" : "geo_point" },
+						"latitude" : { "type" : "float" },
+						"longitude" : { "type" : "float" }
+                                        }
+				
+
+				},
+				"host": {"type": "text"},
+				"path": {"type": "text"},
+				"netflow.in_pkts": {"type": "long"},
+				"netflow.protocol": {"type": "text"},
+				"netflow.ipv4_src_addr": {"type": "ip"},
+				"netflow.l4_src_port": {"type": "long"},
+				"netflow.first_switched": {	"type": "date"},
+				"tags": {"type": "text"},
+				"netflow.tcp_flags": {"type": "text"}
+			}
+		}
+	}
+}
+

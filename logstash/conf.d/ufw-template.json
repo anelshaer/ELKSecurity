@@ -1,0 +1,40 @@
+{
+	"index_patterns": ["ufw-*"],
+	"mappings": {
+		"doc": {
+			"properties": {
+				"@timestamp": {"type": "date"},
+				"@version": {"type": "text"},
+				"srcport": {"type": "integer"},
+				"dstport":{"type":"integer"},
+				"srcip": {"type": "ip"},
+				"dstip":{"type":"ip"},
+				"protocol":{"type":"text"},
+				"hostname":{"type":"text"},
+				"macaddr":{"type":"text"},
+				"interface_in":{"type":"text"},	
+				"interface_out":{"type":"text"},
+				"dst_geoip":{	
+					"dynamic": true,
+					"properties": {
+						"ip": {"type": "ip"},
+						"location" : { "type" : "geo_point" },
+						"latitude" : { "type" : "half_float" },
+						"longitude" : { "type" : "half_float" }
+					}
+				},
+				"src_geoip": {
+					     "dynamic": true,
+                                        "properties": {
+                                                "ip": {"type": "ip"},   
+						"location" : { "type" : "geo_point" },
+						"latitude" : { "type" : "half_float" },
+						"longitude" : { "type" : "half_float" }
+                                        }
+				
+
+				}
+			}
+		}
+	}
+}
